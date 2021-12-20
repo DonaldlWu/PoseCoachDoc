@@ -12,6 +12,7 @@
 		C0856C9C277085C600D2B48B /* PoseCoachDocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856C9B277085C600D2B48B /* PoseCoachDocTests.swift */; };
 		C0856C9D277085C600D2B48B /* PoseCoachDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = C0856C8F277085C600D2B48B /* PoseCoachDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0856CA72770864300D2B48B /* HistoryLogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA62770864300D2B48B /* HistoryLogItem.swift */; };
+		C0856CA92770880F00D2B48B /* HistoryLogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		C0856C96277085C600D2B48B /* PoseCoachDocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoseCoachDocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0856C9B277085C600D2B48B /* PoseCoachDocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseCoachDocTests.swift; sourceTree = "<group>"; };
 		C0856CA62770864300D2B48B /* HistoryLogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogItem.swift; sourceTree = "<group>"; };
+		C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		C0856C8E277085C600D2B48B /* PoseCoachDoc */ = {
 			isa = PBXGroup;
 			children = (
+				C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */,
 				C0856CA62770864300D2B48B /* HistoryLogItem.swift */,
 				C0856C8F277085C600D2B48B /* PoseCoachDoc.h */,
 				C0856C90277085C600D2B48B /* PoseCoachDoc.docc */,
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0856CA92770880F00D2B48B /* HistoryLogLoader.swift in Sources */,
 				C0856CA72770864300D2B48B /* HistoryLogItem.swift in Sources */,
 				C0856C91277085C600D2B48B /* PoseCoachDoc.docc in Sources */,
 			);
