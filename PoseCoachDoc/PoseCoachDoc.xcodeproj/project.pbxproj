@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C0856C91277085C600D2B48B /* PoseCoachDoc.docc in Sources */ = {isa = PBXBuildFile; fileRef = C0856C90277085C600D2B48B /* PoseCoachDoc.docc */; };
 		C0856C97277085C600D2B48B /* PoseCoachDoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0856C8C277085C600D2B48B /* PoseCoachDoc.framework */; };
-		C0856C9C277085C600D2B48B /* PoseCoachDocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856C9B277085C600D2B48B /* PoseCoachDocTests.swift */; };
+		C0856C9C277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856C9B277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift */; };
 		C0856C9D277085C600D2B48B /* PoseCoachDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = C0856C8F277085C600D2B48B /* PoseCoachDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0856CA72770864300D2B48B /* HistoryLogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA62770864300D2B48B /* HistoryLogItem.swift */; };
 		C0856CA92770880F00D2B48B /* HistoryLogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */; };
@@ -30,7 +30,7 @@
 		C0856C8F277085C600D2B48B /* PoseCoachDoc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoseCoachDoc.h; sourceTree = "<group>"; };
 		C0856C90277085C600D2B48B /* PoseCoachDoc.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = PoseCoachDoc.docc; sourceTree = "<group>"; };
 		C0856C96277085C600D2B48B /* PoseCoachDocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoseCoachDocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0856C9B277085C600D2B48B /* PoseCoachDocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseCoachDocTests.swift; sourceTree = "<group>"; };
+		C0856C9B277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHistoryLogLoaderTests.swift; sourceTree = "<group>"; };
 		C0856CA62770864300D2B48B /* HistoryLogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogItem.swift; sourceTree = "<group>"; };
 		C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +86,7 @@
 		C0856C9A277085C600D2B48B /* PoseCoachDocTests */ = {
 			isa = PBXGroup;
 			children = (
-				C0856C9B277085C600D2B48B /* PoseCoachDocTests.swift */,
+				C0856C9B277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift */,
 			);
 			path = PoseCoachDocTests;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0856C9C277085C600D2B48B /* PoseCoachDocTests.swift in Sources */,
+				C0856C9C277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
