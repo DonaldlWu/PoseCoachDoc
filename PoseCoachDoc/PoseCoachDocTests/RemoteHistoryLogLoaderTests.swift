@@ -29,16 +29,14 @@ protocol HTTPClient {
 class RemoteHistoryLogLoaderTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
-        let client = HTTPClientSpy()
-        _ = RemoteHistoryLogLoader(url: URL(string: "https://a-url.com")!, client: client)
+        let (_, client) = makeSUT()
         
         XCTAssertNil(client.requestedURL)
     }
     
     func test_load_requestDataFromURL() {
         let url = URL(string: "https://a-url.com")!
-        let client = HTTPClientSpy()
-        let sut = RemoteHistoryLogLoader(url: URL(string: "https://a-url.com")!, client: client)
+        let (sut, client) = makeSUT()
         
         sut.load()
         
@@ -46,8 +44,13 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
     }
     
     // MARK: - Helper
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteHistoryLogLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = RemoteHistoryLogLoader(url: url, client: client)
+        return (sut, client)
+    }
     
-    class HTTPClientSpy: HTTPClient {
+    private class HTTPClientSpy: HTTPClient {
         var requestedURL: URL?
         
         func get(from url: URL) {
