@@ -13,6 +13,7 @@
 		C0856C9D277085C600D2B48B /* PoseCoachDoc.h in Headers */ = {isa = PBXBuildFile; fileRef = C0856C8F277085C600D2B48B /* PoseCoachDoc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0856CA72770864300D2B48B /* HistoryLogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA62770864300D2B48B /* HistoryLogItem.swift */; };
 		C0856CA92770880F00D2B48B /* HistoryLogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */; };
+		C0B669482771E449009AE6E0 /* RemoteHistoryLogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B669472771E449009AE6E0 /* RemoteHistoryLogLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		C0856C9B277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHistoryLogLoaderTests.swift; sourceTree = "<group>"; };
 		C0856CA62770864300D2B48B /* HistoryLogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogItem.swift; sourceTree = "<group>"; };
 		C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryLogLoader.swift; sourceTree = "<group>"; };
+		C0B669472771E449009AE6E0 /* RemoteHistoryLogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHistoryLogLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		C0856C8E277085C600D2B48B /* PoseCoachDoc */ = {
 			isa = PBXGroup;
 			children = (
+				C0B669462771E42D009AE6E0 /* HistroyLogAPI */,
 				C0856CA82770880F00D2B48B /* HistoryLogLoader.swift */,
 				C0856CA62770864300D2B48B /* HistoryLogItem.swift */,
 				C0856C8F277085C600D2B48B /* PoseCoachDoc.h */,
@@ -89,6 +92,14 @@
 				C0856C9B277085C600D2B48B /* RemoteHistoryLogLoaderTests.swift */,
 			);
 			path = PoseCoachDocTests;
+			sourceTree = "<group>";
+		};
+		C0B669462771E42D009AE6E0 /* HistroyLogAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C0B669472771E449009AE6E0 /* RemoteHistoryLogLoader.swift */,
+			);
+			path = HistroyLogAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 			files = (
 				C0856CA92770880F00D2B48B /* HistoryLogLoader.swift in Sources */,
 				C0856CA72770864300D2B48B /* HistoryLogItem.swift in Sources */,
+				C0B669482771E449009AE6E0 /* RemoteHistoryLogLoader.swift in Sources */,
 				C0856C91277085C600D2B48B /* PoseCoachDoc.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
