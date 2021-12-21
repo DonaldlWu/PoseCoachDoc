@@ -69,3 +69,4 @@ fastlane/test_outpute
 
 *.xcuserdata
 PoseCoachDoc/PoseCoachDoc.xcodeproj/project.xcworkspace/xcuserdata/wuderen.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
