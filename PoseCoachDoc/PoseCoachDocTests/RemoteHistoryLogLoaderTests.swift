@@ -39,12 +39,10 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         client.error = NSError(domain: "Test", code: 0)
         
-        var captureError: RemoteHistoryLogLoader.Error?
-        sut.load { error in
-            captureError = error
-        }
+        var captureErrors = [RemoteHistoryLogLoader.Error]()
+        sut.load { captureErrors.append($0) }
         
-        XCTAssertEqual(captureError, .connectivity)
+        XCTAssertEqual(captureErrors, [.connectivity])
     }
     
     // MARK: - Helper
