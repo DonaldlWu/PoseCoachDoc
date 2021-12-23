@@ -50,12 +50,16 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
         
-        var captureErrors = [RemoteHistoryLogLoader.Error]()
-        sut.load { captureErrors.append($0) }
+        let cases = [199, 201, 300, 400, 500]
         
-        client.complete(withStatusCode: 400)
-       
-        XCTAssertEqual(captureErrors, [.invalidData])
+        cases.enumerated().forEach { index, code in
+            var captureErrors = [RemoteHistoryLogLoader.Error]()
+            sut.load { captureErrors.append($0) }
+            
+            client.complete(withStatusCode: code, at: index)
+            
+            XCTAssertEqual(captureErrors, [.invalidData])
+        }
     }
     
     // MARK: - Helper
