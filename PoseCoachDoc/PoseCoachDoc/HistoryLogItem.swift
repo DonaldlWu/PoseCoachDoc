@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HistoryLogItem {
+public struct HistoryLogItem: Equatable {
     let title: String
     let description: String?
     let timestamp: Date

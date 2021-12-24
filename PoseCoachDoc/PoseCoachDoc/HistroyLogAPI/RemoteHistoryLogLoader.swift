@@ -30,13 +30,18 @@ public final class RemoteHistoryLogLoader {
         case invalidData
     }
     
-    public func load(completion: @escaping (Error) -> Void) {
+    public enum Result: Equatable {
+        case success([HistoryLogItem])
+        case failure(Error)
+    }
+    
+    public func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
             case .success:
-                completion(.invalidData)
+                completion(.failure(.invalidData))
             case .failure:
-                completion(.connectivity)
+                completion(.failure(.connectivity))
             }
         }
     }

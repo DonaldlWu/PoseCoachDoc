@@ -64,7 +64,7 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
     }
-    
+
     // MARK: - Helper
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteHistoryLogLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -74,12 +74,12 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
     
     private func expect(_ sut: RemoteHistoryLogLoader, toCompleteWithError error: RemoteHistoryLogLoader.Error, when action: () -> Void, filePath file: StaticString = #file, line: UInt = #line) {
         
-        var captureErrors = [RemoteHistoryLogLoader.Error]()
-        sut.load { captureErrors.append($0) }
+        var captureResults = [RemoteHistoryLogLoader.Result]()
+        sut.load { captureResults.append($0) }
         
         action()
         
-        XCTAssertEqual(captureErrors, [error], file: file, line: line)
+        XCTAssertEqual(captureResults, [.failure(error)], file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {
