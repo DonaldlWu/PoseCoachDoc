@@ -64,6 +64,18 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
     }
+    
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyList() {
+        let (sut, client) = makeSUT()
+
+        var captureResults = [RemoteHistoryLogLoader.Result]()
+        sut.load { captureResults.append($0) }
+        
+        let emptyListJSON = Data("{\"logs\": []}".utf8)
+        client.complete(withStatusCode: 200, data: emptyListJSON)
+        
+        XCTAssertEqual(captureResults, [.success([])])
+    }
 
     // MARK: - Helper
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteHistoryLogLoader, client: HTTPClientSpy) {
