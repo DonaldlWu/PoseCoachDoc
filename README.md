@@ -64,7 +64,7 @@ Use Cases
 |----------------|--------------------|
 | `title`        | `String`           |
 | `description`  | `String`(optional) |
-| `timestamp`    | `Date`             |
+| `timestamp`    | `String`           |
 
 
 Payload
