@@ -7,8 +7,15 @@
 
 import Foundation
 
-public struct HistoryLogItem: Equatable {
-    let title: String
-    let description: String?
-    let timestamp: Date
+public struct HistoryLogItem: Equatable, Decodable {
+    public let title: String
+    public let description: String?
+    public let timestamp: String
+    
+    public init(title: String, description: String? = nil, timestamp: String) {
+        self.title = title
+        self.description = description
+        self.timestamp = timestamp
+    }
 }
+

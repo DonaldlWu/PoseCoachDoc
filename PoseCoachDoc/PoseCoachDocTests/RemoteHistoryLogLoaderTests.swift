@@ -73,6 +73,32 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
             client.complete(withStatusCode: 200, data: emptyListJSON)
         })
     }
+    
+    func test_load_deliversLogsOn200HTTPResponseWithJSONLogItems() {
+        let (sut, client) = makeSUT()
+        
+        let logItem1 = HistoryLogItem(title: "title", timestamp: "2021/12/27")
+        let log1JSON = [
+            "title": logItem1.title,
+            "timestamp": logItem1.timestamp
+        ]
+        
+        let logItem2 = HistoryLogItem(title: "title2", description: "des2", timestamp: "2021/12/28")
+        let log2JSON = [
+            "title": logItem2.title,
+            "description": logItem2.description,
+            "timestamp": logItem2.timestamp
+        ]
+        
+        let logsJSON = [
+            "logs": [log1JSON, log2JSON]
+        ]
+        
+        expect(sut, toCompleteWithResult: .success([logItem1, logItem2]), when: {
+            let json = try! JSONSerialization.data(withJSONObject: logsJSON)
+            client.complete(withStatusCode: 200, data: json)
+        })
+    }
 
     // MARK: - Helper
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteHistoryLogLoader, client: HTTPClientSpy) {
