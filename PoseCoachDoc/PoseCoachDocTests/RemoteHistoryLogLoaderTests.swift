@@ -86,7 +86,7 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
         let logItem2 = HistoryLogItem(title: "title2", description: "des2", timestamp: "2021/12/28")
         let log2JSON = [
             "title": logItem2.title,
-            "description": logItem2.description,
+            "content": logItem2.description,
             "timestamp": logItem2.timestamp
         ]
         

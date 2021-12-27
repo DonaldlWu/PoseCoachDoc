@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HistoryLogItem: Equatable, Decodable {
+public struct HistoryLogItem: Equatable {
     public let title: String
     public let description: String?
     public let timestamp: String
@@ -19,3 +19,10 @@ public struct HistoryLogItem: Equatable, Decodable {
     }
 }
 
+extension HistoryLogItem: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case description = "content"
+        case timestamp
+    }
+}
