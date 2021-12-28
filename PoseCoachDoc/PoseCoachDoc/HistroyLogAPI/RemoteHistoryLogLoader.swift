@@ -38,8 +38,8 @@ public final class RemoteHistoryLogLoader {
     public func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case let .success(data, _):
-                if let logItmes = try? JSONDecoder().decode(LogItems.self, from: data) {
+            case let .success(data, response):
+                if response.statusCode == 200, let logItmes = try? JSONDecoder().decode(LogItems.self, from: data) {
                     completion(.success(logItmes.logs))
                 } else {
                     completion(.failure(.invalidData))

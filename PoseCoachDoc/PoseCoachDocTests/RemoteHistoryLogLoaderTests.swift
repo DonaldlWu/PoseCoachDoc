@@ -50,8 +50,9 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
         let cases = [199, 201, 300, 400, 500]
         
         cases.enumerated().forEach { index, code in
+            let json = makeLogsJSON([])
             expect(sut, toCompleteWithResult: .failure(.invalidData), when: {
-                client.complete(withStatusCode: code, at: index)
+                client.complete(withStatusCode: code, data: json, at: index)
             })
         }
     }
@@ -138,7 +139,7 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
             let response = HTTPURLResponse(url: requestedURLs[0],
                                            statusCode: code,
                                            httpVersion: nil,
