@@ -39,8 +39,8 @@ public final class RemoteHistoryLogLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if response.statusCode == 200, let logItmes = try? JSONDecoder().decode(JSONItem.self, from: data) {
-                    completion(.success(logItmes.logs.map { $0.log }))
+                if let logItmes = try? HistoryLogItemMapper.map(data, response) {
+                    completion(.success(logItmes))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -51,18 +51,33 @@ public final class RemoteHistoryLogLoader {
     }
 }
 
-private struct JSONItem: Decodable {
-    let logs: [HistoryLog]
-}
-
-private struct HistoryLog: Decodable {
-    let title: String
-    let content: String?
-    let timestamp: String
+private class HistoryLogItemMapper {
+    private struct JSONItem: Decodable {
+        let logs: [HistoryLog]
+    }
     
-    var log: HistoryLogItem {
-        return HistoryLogItem(title: title,
-                              description: content,
-                              timestamp: timestamp)
+    private struct HistoryLog: Decodable {
+        let title: String
+        let content: String?
+        let timestamp: String
+        
+        var log: HistoryLogItem {
+            return HistoryLogItem(title: title,
+                                  description: content,
+                                  timestamp: timestamp)
+        }
+    }
+    
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [HistoryLogItem] {
+        guard response.statusCode == 200 else {
+            throw RemoteHistoryLogLoader.Error.invalidData
+        }
+        
+        let logItems = try JSONDecoder().decode(JSONItem.self, from: data).logs.map { $0.log }
+        return logItems
     }
 }
+
+
+
+
