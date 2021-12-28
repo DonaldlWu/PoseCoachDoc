@@ -39,8 +39,8 @@ public final class RemoteHistoryLogLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if response.statusCode == 200, let logItmes = try? JSONDecoder().decode(LogItems.self, from: data) {
-                    completion(.success(logItmes.logs))
+                if response.statusCode == 200, let logItmes = try? JSONDecoder().decode(JSONItem.self, from: data) {
+                    completion(.success(logItmes.logs.map { $0.log }))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -51,6 +51,18 @@ public final class RemoteHistoryLogLoader {
     }
 }
 
-private struct LogItems: Decodable {
-    let logs: [HistoryLogItem]
+private struct JSONItem: Decodable {
+    let logs: [HistoryLog]
+}
+
+private struct HistoryLog: Decodable {
+    let title: String
+    let content: String?
+    let timestamp: String
+    
+    var log: HistoryLogItem {
+        return HistoryLogItem(title: title,
+                              description: content,
+                              timestamp: timestamp)
+    }
 }

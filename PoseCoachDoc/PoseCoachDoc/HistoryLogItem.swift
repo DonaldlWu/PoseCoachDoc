@@ -18,11 +18,3 @@ public struct HistoryLogItem: Equatable {
         self.timestamp = timestamp
     }
 }
-
-extension HistoryLogItem: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case title
-        case description = "content"
-        case timestamp
-    }
-}
