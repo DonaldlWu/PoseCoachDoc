@@ -77,25 +77,13 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
     func test_load_deliversLogsOn200HTTPResponseWithJSONLogItems() {
         let (sut, client) = makeSUT()
         
-        let logItem1 = HistoryLogItem(title: "title", timestamp: "2021/12/27")
-        let log1JSON = [
-            "title": logItem1.title,
-            "timestamp": logItem1.timestamp
-        ]
+        let logItem1 = makeLogItem(title: "title", timestamp: "2021/12/27")
+        let logItem2 = makeLogItem(title: "title2", description: "des2", timestamp: "2021/12/28")
+        let logs = [logItem1.model, logItem2.model]
+        let jsons = [logItem1.json, logItem2.json]
         
-        let logItem2 = HistoryLogItem(title: "title2", description: "des2", timestamp: "2021/12/28")
-        let log2JSON = [
-            "title": logItem2.title,
-            "content": logItem2.description,
-            "timestamp": logItem2.timestamp
-        ]
-        
-        let logsJSON = [
-            "logs": [log1JSON, log2JSON]
-        ]
-        
-        expect(sut, toCompleteWithResult: .success([logItem1, logItem2]), when: {
-            let json = try! JSONSerialization.data(withJSONObject: logsJSON)
+        expect(sut, toCompleteWithResult: .success(logs), when: {
+            let json = makeLogsJSON(jsons)
             client.complete(withStatusCode: 200, data: json)
         })
     }
@@ -105,6 +93,24 @@ class RemoteHistoryLogLoaderTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteHistoryLogLoader(url: url, client: client)
         return (sut, client)
+    }
+    
+    private func makeLogItem(title: String, description: String? = nil, timestamp: String) -> (model: HistoryLogItem, json: [String: Any]) {
+        let logItem = HistoryLogItem(title: title,
+                                     description: description,
+                                     timestamp: timestamp)
+        let logJSON = [
+            "title": title,
+            "content": description,
+            "timestamp": timestamp
+        ].compactMapValues({$0})
+        
+        return (logItem, logJSON)
+    }
+    
+    private func makeLogsJSON(_ logs: [[String: Any]]) -> Data {
+        let json = ["logs": logs]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
     
     private func expect(_ sut: RemoteHistoryLogLoader, toCompleteWithResult result: RemoteHistoryLogLoader.Result, when action: () -> Void, filePath file: StaticString = #file, line: UInt = #line) {
